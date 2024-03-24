@@ -35,7 +35,7 @@ app.post('/staff', async (req, res) => {
     if (!username) {
       return res.status(400).json({ message: 'กรุณาระบุชื่อผู้ใช้' });
     }
-    const result = await pool.query('SELECT s.staff_id , s.first_name , s.last_name , s."position" , s.company  FROM public.users u  inner join public.staff s on u.username = s.first_name where u.username = $1', [username]);
+    const result = await pool.query('SELECT s.staff_id , s.first_name , s.last_name , s."position" , s.company  FROM public.users u  inner join public.staff s on u.username = s.username where u.username = $1', [username]);
 
     if (result.rows.length > 0) {
       res.status(200).json(result.rows);

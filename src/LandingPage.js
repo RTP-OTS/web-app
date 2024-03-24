@@ -45,13 +45,13 @@ const [isLoading, setIsLoading] = useState(false);
     <div className="container">
       <div className="card">
         <h2>Hello, {username} Welcome!</h2>
-        <p>This is your information:</p>
+        <p id='heading'>This is your information:</p>
         {isLoading ? (
           <p>Loading...</p>
         ) : (
           <table>
             <thead>
-              <tr>
+              <tr id='headingtable'>
                 <th>Firstname</th>
                 <th>Lastname</th>
                 <th>Position</th>
@@ -62,10 +62,10 @@ const [isLoading, setIsLoading] = useState(false);
               {staffData.length > 0 ? (
                 staffData.map((staff) => (
                   <tr key={staff.staff_id}>
-                    <td>{staff.first_name}</td>
-                    <td>{staff.last_name}</td>
-                    <td>{staff.position}</td>
-                    <td>{staff.company}</td>
+                    <td id='fname'>{staff.first_name}</td>
+                    <td id='lname'>{staff.last_name}</td>
+                    <td id='position'>{staff.position}</td>
+                    <td id='company'>{staff.company}</td>
                   </tr>
                 ))
               ) : (

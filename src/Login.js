@@ -16,7 +16,7 @@ const Login = () => {
 
     try {
       const response = await fetch('http://localhost:3001/Login', {
-        method: 'POST', // เปลี่ยนเป็น POST
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -38,6 +38,12 @@ const Login = () => {
       console.error('มีข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์:', error);
     }
   };
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleLogin();
+    }
+  };
+
 
   return (
     <div className="container">
@@ -64,6 +70,7 @@ const Login = () => {
             setPassword(e.target.value);
             setError('');
           }}
+          onKeyPress={handleKeyPress}
         />
         {error && <p className="error-message" id='error-message'>{error}</p>}
         <button className="button" id='login-button' onClick={handleLogin}>
